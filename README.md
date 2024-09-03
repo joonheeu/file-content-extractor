@@ -1,3 +1,4 @@
+
 # FileContentExtractor
 
 **Languages:** [🇺🇸English](README.md) | [🇰🇷한국어](README_ko.md)
@@ -7,7 +8,7 @@
 ## Features
 
 - Recursively traverses directories and extracts the content of text files.
-- Allows you to ignore specific files, directories, or patterns using a `.ignorelist` file.
+- Allows you to ignore specific files, directories, or patterns using a `.conf` file.
 - Outputs file paths as either relative or absolute paths.
 - Supports filtering files by extension, size, and modification date.
 - Allows splitting output into multiple files based on size.
@@ -30,7 +31,7 @@ pip install file-content-extractor
    - Default usage (relative paths):
 
      ```bash
-     file_extractor
+     fce
      ```
 
      - After running this command, you will be prompted to confirm the extraction by typing `y`.
@@ -38,7 +39,7 @@ pip install file-content-extractor
    - Use absolute paths:
 
      ```bash
-     file_extractor -a
+     fce -a
      ```
 
 2. **Specify additional options**:
@@ -46,31 +47,31 @@ pip install file-content-extractor
    - Ignore specific files or directories:
 
      ```bash
-     file_extractor -i my_ignore_list.txt
+     fce -i my_ignore_list.conf
      ```
 
    - Save output to a custom file:
 
      ```bash
-     file_extractor -o my_output.txt
+     fce -o my_output.txt
      ```
 
    - Filter by file extension, size, and modification date:
 
      ```bash
-     file_extractor -e .txt,.py -m 1024 -M 1048576 -d 2023-01-01
+     fce -e .txt,.py -m 1024 -M 1048576 -d 2023-01-01
      ```
 
    - Split output into multiple files:
 
      ```bash
-     file_extractor -s 10485760
+     fce -s 10485760
      ```
 
    - Specify the directory to start extraction from:
 
      ```bash
-     file_extractor -p /path/to/directory
+     fce -p /path/to/directory
      ```
 
 3. **Check version**:
@@ -78,7 +79,7 @@ pip install file-content-extractor
    - To display the current version of the tool:
 
      ```bash
-     file_extractor -v
+     fce -v
      ```
 
 4. **Help**:
@@ -86,13 +87,13 @@ pip install file-content-extractor
    - To display help information and usage details:
 
      ```bash
-     file_extractor -h
+     fce -h
      ```
 
 ## Options
 
 - `-a`, `--absolute`: Use absolute paths in the output.
-- `-i <file>`, `--ignore=<file>`: Specify a custom ignore file (default is `.ignorelist`).
+- `-i <file>`, `--ignore=<file>`: Specify a custom ignore file (default is `ignore.conf`).
 - `-o <file>`, `--output=<file>`: Specify a custom output file (default is `output.txt`).
 - `-e <ext1,ext2,...>`, `--extensions=<ext1,ext2,...>`: Specify file extensions to include (e.g., `.txt,.py`).
 - `-m <bytes>`, `--min-size=<bytes>`: Specify minimum file size to include.
@@ -100,6 +101,8 @@ pip install file-content-extractor
 - `-d <YYYY-MM-DD>`, `--modified-after=<YYYY-MM-DD>`: Include only files modified after a specific date.
 - `-s <bytes>`, `--split-size=<bytes>`: Split output files into chunks of the specified size.
 - `-p <directory>`, `--path=<directory>`: Specify the directory to start extraction from.
+- `--tree`: Print the directory tree of the current path and add it to the output file.
+- `--include-ignored`: Include files and directories listed in the `ignore.conf` when printing the directory tree.
 - `-h`, `--help`: Show this help message and exit.
 - `-v`, `--version`: Show version information and exit.
 
@@ -109,7 +112,9 @@ Contributions are welcome! Feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed
+
+ under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Author
 

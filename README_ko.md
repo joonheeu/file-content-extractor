@@ -1,3 +1,4 @@
+
 # FileContentExtractor
 
 **언어:** [🇺🇸English](README.md) | [🇰🇷한국어](README_ko.md)
@@ -7,7 +8,7 @@
 ## 주요 기능
 
 - 디렉토리를 재귀적으로 탐색하여 텍스트 파일 내용을 추출합니다.
-- `.ignorelist` 파일을 사용하여 특정 파일, 디렉토리 또는 패턴을 무시할 수 있습니다.
+- `.conf` 파일을 사용하여 특정 파일, 디렉토리 또는 패턴을 무시할 수 있습니다.
 - 파일 경로를 상대 경로나 절대 경로로 출력할 수 있습니다.
 - 파일 확장자, 크기, 수정 날짜를 기준으로 파일을 필터링할 수 있습니다.
 - 출력 파일을 크기 기준으로 여러 개로 나눌 수 있습니다.
@@ -30,7 +31,7 @@ pip install file-content-extractor
    - 기본 사용 (상대 경로 출력):
 
      ```bash
-     file_extractor
+     fce
      ```
 
      - 이 명령어를 실행한 후, 추출을 확인하는 메시지가 표시되며, `y`를 입력해야만 진행됩니다.
@@ -38,7 +39,7 @@ pip install file-content-extractor
    - 절대 경로 사용:
 
      ```bash
-     file_extractor -a
+     fce -a
      ```
 
 2. **추가 옵션 지정**:
@@ -46,31 +47,31 @@ pip install file-content-extractor
    - 특정 파일이나 디렉토리 무시:
 
      ```bash
-     file_extractor -i my_ignore_list.txt
+     fce -i my_ignore_list.conf
      ```
 
    - 출력 파일을 사용자 지정 파일로 저장:
 
      ```bash
-     file_extractor -o my_output.txt
+     fce -o my_output.txt
      ```
 
    - 파일 확장자, 크기, 수정 날짜로 필터링:
 
      ```bash
-     file_extractor -e .txt,.py -m 1024 -M 1048576 -d 2023-01-01
+     fce -e .txt,.py -m 1024 -M 1048576 -d 2023-01-01
      ```
 
    - 출력 파일을 여러 개로 나누기:
 
      ```bash
-     file_extractor -s 10485760
+     fce -s 10485760
      ```
 
    - 추출을 시작할 디렉토리 지정:
 
      ```bash
-     file_extractor -p /path/to/directory
+     fce -p /path/to/directory
      ```
 
 3. **버전 확인**:
@@ -78,7 +79,7 @@ pip install file-content-extractor
    - 도구의 현재 버전을 확인하려면:
 
      ```bash
-     file_extractor -v
+     fce -v
      ```
 
 4. **도움말**:
@@ -86,13 +87,13 @@ pip install file-content-extractor
    - 사용법 정보와 옵션 세부 사항을 보려면:
 
      ```bash
-     file_extractor -h
+     fce -h
      ```
 
 ## 옵션
 
 - `-a`, `--absolute`: 출력에서 절대 경로를 사용합니다.
-- `-i <file>`, `--ignore=<file>`: 사용자 지정 무시 파일을 지정합니다 (기본값은 `.ignorelist`).
+- `-i <file>`, `--ignore=<file>`: 사용자 지정 무시 파일을 지정합니다 (기본값은 `ignore.conf`).
 - `-o <file>`, `--output=<file>`: 사용자 지정 출력 파일을 지정합니다 (기본값은 `output.txt`).
 - `-e <ext1,ext2,...>`, `--extensions=<ext1,ext2,...>`: 포함할 파일 확장자를 지정합니다 (예: `.txt,.py`).
 - `-m <bytes>`, `--min-size=<bytes>`: 포함할 최소 파일 크기를 지정합니다.
@@ -100,6 +101,8 @@ pip install file-content-extractor
 - `-d <YYYY-MM-DD>`, `--modified-after=<YYYY-MM-DD>`: 특정 날짜 이후에 수정된 파일만 포함합니다.
 - `-s <bytes>`, `--split-size=<bytes>`: 지정된 크기로 출력 파일을 나눕니다.
 - `-p <directory>`, `--path=<directory>`: 추출을 시작할 디렉토리를 지정합니다.
+- `--tree`: 현재 경로의 디렉토리 트리를 출력 파일에 추가합니다.
+- `--include-ignored`: 트리를 출력할 때 `ignore.conf`에 포함된 파일과 디렉토리를 포함합니다.
 - `-h`, `--help`: 이 도움말 메시지를 표시하고 종료합니다.
 - `-v`, `--version`: 버전 정보를 표시하고 종료합니다.
 
