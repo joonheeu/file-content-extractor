@@ -2,14 +2,14 @@ from setuptools import setup, find_packages
 
 setup(
     name="file-content-extractor",
-    version="0.3.2",
+    version="0.3.6",
     packages=find_packages(),
     entry_points={
         'console_scripts': [
             'fce=src.main:main', 
         ],
     },
-    install_requires=[],
+    install_requires=['anytree'],
     author="Daniel",
     author_email="daniel@udit.one",
     description="A tool to extract content from text files in a directory, with options to ignore certain files and directories.",
