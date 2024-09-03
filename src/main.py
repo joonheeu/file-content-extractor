@@ -1,7 +1,7 @@
 import sys
 from datetime import datetime
-from fce.extractor import FileExtractor
-from fce.version import get_version, check_for_updates, upgrade_package
+from src.extractor import FileExtractor
+from src.version import get_version, check_for_updates, upgrade_package
 
 
 def print_usage():
