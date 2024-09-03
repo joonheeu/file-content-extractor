@@ -2,11 +2,11 @@ from setuptools import setup, find_packages
 
 setup(
     name="file-content-extractor",
-    version="0.3.0",
+    version="0.3.1",
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'fce=fce.main:main', 
+            'fce=src.main:main', 
         ],
     },
     install_requires=[],
